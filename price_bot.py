@@ -1,3 +1,26 @@
+'''
+This code is to run a Discord Bot that displays the current price of your
+cryptocurrency in it's status, and updates it at given intervals of time.
+
+The first step is to create a Discord Bot Account. This is done through
+Discord.com Application Portal. Note down the token and the invite link.
+
+The token is the password to the bot. Keep it very securely, and put it in
+"token.txt".
+
+Invite the bot to your server(s), and give it permission to access the channels
+where you want to show the price.
+
+Put the name of your cryptocurrency in "name.txt"
+The time gap is the intervals (in seconds) in which the price displayed is
+updated. Put it in "time_gap.txt", according to your need.
+
+Different Cryptos use different APIs for prices; thus you can write the method
+specific to your crypto in get_price()
+
+Now, set up is done, and you simply have to run the code.
+'''
+
 import asyncio
 import discord
 import time
@@ -5,6 +28,7 @@ import time
 client=discord.Client()
 
 name = None #Global Variable
+
 
 def get_from_file(file_name):
     '''
@@ -19,6 +43,8 @@ def get_from_file(file_name):
     f.close()
 
     return (data)
+
+
 
 def get_token():
     '''
@@ -58,6 +84,9 @@ def get_time_gap():
     '''
     Store the time gap in time_gap.txt
     That is the amount of time (in seconds) it will wait before updating the price
+
+    Currently set to 600 in the file (10 minutes), but you should change
+    according to your need
 
     Parameters: None
     Returns: an int which is the time gap
@@ -117,5 +146,5 @@ async def update_status():
 client.loop.create_task(update_status()) #Calls the coroutine update_status 
 
 token=get_token()
-client.run(token)
+client.run(token) #Runs the bot
         
