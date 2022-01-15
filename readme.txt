@@ -17,4 +17,4 @@ updated. Put it in "time_gap.txt", according to your need.
 Different Cryptos use different APIs for prices; thus you can write the method
 specific to your crypto in get_price()
 
-Now, set up is done, and you simply have to run the code.
+Now, set up is done, and you simply have to run the code. (price_bot.py)
